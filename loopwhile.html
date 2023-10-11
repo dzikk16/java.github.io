@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perulangan dan Percabangan</title>
+</head>
+<body>
+
+<h1>Contoh Perulangan dan Percabangan</h1>
+
+
+<h2>Perulangan For:</h2>
+<p id="perulanganFor"></p>
+
+
+<h2>Percabangan If-Else:</h2>
+<button onclick="cekUsia()">Cek Usia</button>
+<p id="hasilPercabangan"></p>
+
+<script>
+   
+    var perulanganForText = "";
+    for (var i = 1; i <= 5; i++) {
+        perulanganForText += "Iterasi ke-" + i + "<br>";
+    }
+    document.getElementById("perulanganFor").innerHTML = perulanganForText;
+
+    
+    function cekUsia() {
+        var usia = parseInt(prompt("Masukkan usia Anda:"));
+
+        if (usia < 18) {
+            document.getElementById("hasilPercabangan").innerHTML = "Anda adalah seorang anak.";
+        } else if (usia >= 18 && usia < 60) {
+            document.getElementById("hasilPercabangan").innerHTML = "Anda adalah seorang dewasa.";
+        } else {
+            document.getElementById("hasilPercabangan").innerHTML = "Anda adalah seorang lansia.";
+        }
+    }
+</script>
+
+</body>
+</html>
