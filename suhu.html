@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter-Array-Textcontent</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <h1 class="mt-5 text-center">Suhu Converter</h1>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="celcius">Masukkan suhu dalam Celsius</label>
+                    <input type="number" class="form-control" id="celcius">
+                </div>
+                <button class="btn btn-success btn-block mt-2" onclick="convert()">Konversi</button>
+                <h2 class="mt-4">Hasil: <span id="hasil" class="text-load"></span> Fahrenheit</h2>
+            </div>
+        </div>
+    </div>
+    <script>
+        function convert() {
+            let celcius = parseFloat(document.getElementById("celcius").value);
+            let fahrenheit = (celcius * 9 / 5) + 32;
+            document.getElementById("hasil").textContent = fahrenheit.toFixed(2);
+    }
+    </script>
+    <hr>
+    <div class="container">
+        <h1 class="mt-5 text-center">Daftar Siswa</h1>
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Umur</th>
+                    <th>Kelas</th>
+                </tr>
+            </thead>
+            <tbody id="siswa-list">
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let siswa = [
+            { id: 1, nama: 'Rusdi', umur: 17, kelas: 'XII-1' },
+            { id: 2, nama: 'Andre', umur: 16, kelas: 'XI-3' },
+            { id: 3, nama: 'Mei', umur: 18, kelas: 'X-2' },
+            { id: 4, nama: 'Sahrul', umur: 17, kelas: 'XI-1' }
+        ];
+
+        function tampilkanSiswa() {
+            let siswaList = document.getElementById("siswa-list");
+            siswaList.innerHTML = ""; 
+
+            siswa.forEach(function (file) {
+                let row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${file.id}</td>
+                    <td>${file.nama}</td>
+                    <td>${file.umur}</td>
+                    <td>${file.kelas}</td>
+                `;
+                siswaList.appendChild(row);
+            });
+        }
+
+        tampilkanSiswa();
+    </script><hr><hr>
+    <div id="myElement">Ini adalah teks yang dapat diubah</div>
+    <button onclick="ubahNilai()">Ubah Nilai</button>
+
+    <script>
+        function ubahNilai() {
+            let element = document.getElementById('myElement');
+            let defaultTextColor = 'black';
+            let defaultBackgroundColor = 'white';
+
+            if (!element.getAttribute('file-saved')) {
+                element.setAttribute('file-saved', 'true');
+                element.setAttribute('file-default-text', element.textContent);
+                element.setAttribute('file-default-color', element.style.color);
+                element.setAttribute('file-default-bgcolor', element.style.backgroundColor);
+            }
+
+            if (element.textContent === 'Ini adalah teks yang dapat diubah') {
+                element.textContent = 'Nilai telah diubah!';
+                element.style.color = 'red';
+                element.style.backgroundColor = 'lightgray';
+            } else {
+                element.textContent = element.getAttribute('file-default-text');
+                element.style.color = element.getAttribute('file-default-color') || defaultTextColor;
+                element.style.backgroundColor = element.getAttribute('file-default-bgcolor') || defaultBackgroundColor;
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer>
+        <p>&copy; 2023 Feryls. All right reserved.</p>
+    </footer>
+</body>
+
+</html>
